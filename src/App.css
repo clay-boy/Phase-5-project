@@ -1,38 +1,256 @@
-.App {
+/* Modal Overlay Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Soft dark overlay for focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Modal Content Styling */
+.modal-content {
+  background-color: #f9f4e7; /* Soft natural beige background */
+  padding: 40px;
+  border-radius: 15px;
+  width: 70%;
+  max-width: 800px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.7s ease-out forwards;
+  transform: translateY(50px);
+  opacity: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
+h2 {
+  font-size: 2.2rem;
+  color: #3e5b46; /* Earthy dark green */
+  font-weight: 600;
   text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-family: 'Merriweather', serif; /* A classic serif for a more rustic feel */
+  letter-spacing: 1.5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Form Styling */
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+
+/* Label Styling */
+label {
+  font-size: 1.1rem;
+  color: #4f7d4f; /* Subtle green */
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Input / Textarea Styling */
+input[type="text"],
+textarea,
+input[type="file"],
+input[type="url"] {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 2px solid #c2b29f; /* Soft beige color for borders */
+  border-radius: 8px;
+  background-color: #e1dfcc; /* Light, soft natural background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  color: #4CAF50; /* Green color for text */
+}
+
+input[type="text"]:focus,
+textarea:focus,
+input[type="url"]:focus {
+  border-color: #6e8b3d; /* Green border for focus */
+  box-shadow: 0 0 10px rgba(110, 139, 61, 0.4);
+  outline: none;
+  transform: scale(1.02);
+  color: #4CAF50; /* Green color for text on focus */
+}
+
+/* Image Preview Styling */
+.image-preview {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 2px solid #d4cba9;
+}
+
+.image-preview p {
+  font-size: 1.1rem;
+  color: #5b5d3e; /* Earthy olive tone */
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-top: 15px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview img:hover {
+  transform: scale(1.05);
+}
+
+/* Button Styling */
+button {
+  padding: 16px 24px;
+  font-size: 1.1rem;
   color: white;
+  background-color: #6e8b3d; /* Natural green */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+button[type="button"] {
+  background-color: #c0392b; /* Rustic red for exit button */
 }
 
-@keyframes App-logo-spin {
+button:hover {
+  background-color: #558a2d; /* Slightly darker green */
+  transform: translateY(-3px);
+}
+
+button[type="button"]:hover {
+  background-color: #e74c3c; /* Darker red for close button */
+  transform: translateY(-3px);
+}
+
+button:disabled {
+  background-color: #b1b8a2;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Cards Section Styling */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 20px;
+  padding: 40px 20px;
+  background-color: #e1dfcc; /* Light background matching the modal */
+  margin-top: 20px;
+  overflow-y: auto; /* Makes the card section scrollable if needed */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: #3e5b46;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #5b5d3e;
+  line-height: 1.5;
+}
+
+/* Card Footer (for additional buttons, etc.) */
+.card-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-footer .button {
+  padding: 10px 20px;
+  background-color: #6e8b3d;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-footer .button:hover {
+  background-color: #558a2d;
+}
+
+/* Responsive Design for Cards */
+@media (max-width: 1200px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* 1 card per row */
   }
 }
